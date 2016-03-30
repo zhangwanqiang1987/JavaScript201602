@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+//函数的length是参数的个数
+
+
+    function Fn() {
+        this.x = 100;
+    }
+    Fn.prototype.getX = function () {
+        console.log(this.x);
+    };
+    var f = new Fn;
+
+    //1-函数有三种角色:普通函数、类、普通的对象,三种角色之间一般都是相互独立的,互不影响;
+
+    //2-所有的对象数据类型都是Object这个基类的一个实例(不管找多少级,只要是对象数据类型的最后都会回到Object.prototype)
+
+    //3-所有的函数数据类型都是Function这个基类的一个实例(所有的函数都可以调用call/apply/bind这几个方法了)
+
+
+</script>
+</body>
+</html>
+

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script type="text/javascript">
+    function listToArray(likeArray){
+        try{
+            return [].slice.call(likeArray,0);
+        }catch(e){
+            var ary=[];
+            for(var i=0;i<likeArray.length;i++){
+                ary[ary.length]=likeArray[i];
+            }
+  }             return ary;
+    }
+
+
+
+    try{
+        comsole.log(aaa);
+    }catch(e){
+        throw new Error(e.message);
+    }
+    cosole.log("ok");
+
+    //一般用在处理兼容问题的
+    //任意数求和
+    function fn(){
+        var total=0;
+        for(var i=0;i<arguments.length;i++){
+            var cur=arguments[i];
+            cur=Number(cur);
+            if(!isNaN(cur)){
+                total+=cur;
+            }
+        }
+        return total;
+    }
+    fn(1,2,3,4,5,6,7,8,9,10);
+</script>
+</body>
+</html>

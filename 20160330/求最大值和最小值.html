@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script type="text/javascript">
+    (function(){
+        eval("var test=5");
+        console.log(test);//--->5
+    })();
+    console.log(test);//--->报错
+//这里不用看是否有eval(是把括号里的代码转化为js表达式执行)，有var就有预定义，为私有变量
+
+</script>
+</body>
+</html>
