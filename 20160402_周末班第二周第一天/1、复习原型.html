@@ -10,7 +10,7 @@
         this.x = this.y = num;
     }
     Fn.prototype = {//->批量的给类的原型增加属性:Fn.prototype重新指向了我们自己创建的这个对象,浏览器之前给它开辟的这个堆内存会被释放掉(没有被占用)
-//        constructor: Fn,
+//        constructor: Fn,//自己手动增加constructor指向
         x: 20,
         sum: function () {
             console.log(this.x + this.y);

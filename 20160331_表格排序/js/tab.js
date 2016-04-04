@@ -65,7 +65,7 @@ function sortTab(n) {
     });
 
     var frg = document.createDocumentFragment();
-    for (var i = 0, len = ary.length; i < len; i++) {
+    for (var i = 0, len = ary.length; i < len; i++) {//减少浏览器访问量提高性能，只浏览一次
         frg.appendChild(ary[i]);
     }
     tBody.appendChild(frg);
