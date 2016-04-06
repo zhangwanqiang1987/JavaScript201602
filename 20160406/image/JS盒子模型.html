@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+        }
+
+        .box {
+            margin: 100px;
+            border: 10px solid green;
+            padding: 30px;
+            width: 200px;
+            height: 200px;
+            line-height: 25px;
+        }
+    </style>
+</head>
+<body>
+<div class="box box2" id="box">
+    站在台风口上,猪都能飞起来~~;要得到你必须要付出,要付出你还需要学会坚持,如果你真的觉得很难,那你就放弃,但是一但放弃就不要在抱怨,我觉得人生就是这样,世界真的是平衡的,每个人都是通过自己的努力,去决定自己生活的样子;
+</div>
+<script type="text/javascript">
+    //->JS盒子模型:JS中提供一系列的属性,让我们获取到CSS盒子模型中的相关样式的值
+    var box = document.getElementById("box");
+
+    //->JS盒子模型提供的属性都是当前元素的"私有的属性"(13个)
+    //1、client系列:clientHeight/clientWidth/clientTop/clientLeft
+    //2、offset系列:offsetHeight/offsetWidth/offsetTop/offsetLeft/offsetParent
+    //3、scroll系列:scrollHeight/scrollWidth/scrollTop/scrollLeft
+
+
+    //->clientHeight/clientWidth/clientTop/clientLeft/offsetHeight/offsetWidth/scrollHeight/scrollWidth
+
+    //[在没有内容的溢出情况下]
+    //获取的值是什么样的?例如:clientWidth就是内容的宽度+左右padding
+//    1，clientWidth:真实内容的宽度+左右padding
+//    2，clientHeight:真实内容的高度+上下padding
+//    3，clientTop:上边框的高度
+//    4，clientLeft:左边框的宽度
+//    5，offsetWidth:clientWidth+左右边框
+//    6，offsetHeight:clientHeight+上下边框
+//    7，scrollHeight,scrollWidth:在内容没有溢出时是clientHeight,clientWidth一样，在内容溢出时
+//    scrollWidth=真实内容宽度（设置的内容宽度+溢出的内容宽度）+左右padding,scrollHeight=真实内容的高度（设置的内容高度+溢出的内容高度）+上padding；
+//    只有scrollHeight会改变
+    //[在有内容的溢出情况下]
+    //上述获取的值是否会变化
+
+
+
+</script>
+</body>
+</html>
