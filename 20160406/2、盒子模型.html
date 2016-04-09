@@ -65,6 +65,8 @@
     //->对于操作浏览器的"所有的盒子模型属性"来说,想要兼容所有的浏览器,必须要写两套获取方式:
     //document.documentElement.[盒子模型的属性]||document.body.[盒子模型的属性]
     //例如：document.documentElement.scrollHeight||document.body.scrollHeight
+    //内容有溢出的话：scrollHeight=真时的内容高度+上填充
+    //scrollWidth=真实的内容宽度+左填充
 </script>
 </body>
 </html>
