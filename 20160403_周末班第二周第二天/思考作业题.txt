@@ -18,21 +18,21 @@
   }
 
   var res1=Fn(10,20);
-  console.log(res1);
+  console.log(res1);//30
 
   var f1=new Fn;
-  console.log(f1.total);
-  f1.sum();
+  console.log(f1.total);//indefined
+  f1.sum();//NaN
 
   var f2=new Fn(10,20);
-  console.log(f2.total);
-  f2.sum();
+  console.log(f2.total);//undefined
+  f2.sum();//NaN
 
-  console.log(Fn.total);
-  Fn.sum();
+  console.log(Fn.total);//100
+  Fn.sum();NaN
 
-  console.log(Fn.constructor);
-  console.log(f1.constructor);
+  console.log(Fn.constructor);Function
+  console.log(f1.constructor);Object
 
 2、回去后把以下标签每一级原型上的属性和方法进行整理总结
    div ->私有属性 ->HTMLDivElement ->.... ->Object
@@ -40,6 +40,8 @@
    document
    window
    思考:为什么getElementById/getElementsByName的上下文只能是document
+   因为id在整个HTML文档中有且只有一个，后者是因为获取相同name的表单元素(支队表单元素的name属性起作用)
+
 
    以上思考题,自己去做就可以,不需要交,如果遇到死活都不理解的,QQ我,根据情况可能临时加课
 
@@ -53,15 +55,61 @@
 
   //->思考:
   //->利用我们oLis和页面是映射关系的机制，优化升序序排序的切换
+  function sortTab(n) {
+      for (var k = 0; k < oThs.length; k++) {
+          k != n ? oThs[k].flag = false : null;
+      }
+
+      var ary = utils.listToArray(oRows);
+      if (!this.flag) {
+          ary.sort(function (a, b) {
+              var curInn = a.cells[n].innerHTML, nexInn = b.cells[n].innerHTML, curInnNum = parseFloat(curInn), nexInnNum = parseFloat(nexInn);
+              if (isNaN(curInnNum) || isNaN(nexInnNum)) {
+                  return curInn.localeCompare(nexInn);
+              }
+              return curInnNum - nexInnNum;
+          });
+          this.flag = true;
+      } else {
+          ary.reverse();
+      }
+
+      var frg = document.createDocumentFragment();
+      for (var i = 0, len = ary.length; i < len; i++) {
+          frg.appendChild(ary[i]);
+      }
+      tBody.appendChild(frg);
+      changeBg();
+  }
 
 5、正则思考题
    ->queryURLParameter 获取地址栏中的参数
    ->地址:http://kbs.sports.qq.com/kbsweb/game.htm?mid=1467588&age=18
    ->结果:{mid:"1467588",age:18}
    ->方法不限,可以使用正则,也可以使用字符串拼接的方式(建议两种都研究一下)
-
+var str = "http://kbs.sports.qq.com/kbsweb/game.htm?mid=1467588&age=18", obj = {};
+    var reg = /([^?=&]+)=([^?=&]+)/g, res = reg.exec(str);
+    while (res) {
+        obj[res[1]] = res[2];
+        res = reg.exec(str);
+    }
+    console.log(obj);
    ->获取一个字符串中出现次数最多的字符和对应的次数
    ->var str="zhufengpeixunyangfanqihang";
    ->哪些字符出现的次数最多,最多出现多少次?
-
+var str="zhufengpeixunyangfanqihang";
+    var obj={};
+    str.replace(/[a-z]/gi,function(){
+        var val=arguments[0];
+        obj[val]>=1?obj[val]+=1:obj[val]=1;
+    });
+    var maxNum=0;
+    for(var key in obj){
+        obj[key]>maxNum?maxNum=obj[key]:null;
+    }
+    var ary=[];
+    for(var key in obj){
+        obj[key]===maxNum?ary.push(key):null;
+    }
+    console.log(ary.toString(),maxNum);
     周四晚上23:59分之前,统一由小组组长收集完成后,发给周老师:1002@zhufengpeixun.cn  标题:全日制/周末班/在线+第一周作业
