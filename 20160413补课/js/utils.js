@@ -1,4 +1,4 @@
-﻿var utils = (function () {
+var utils = (function () {
     var flag = "getComputedStyle" in window;
 
     //->listToArray:把类数组集合转换为数组
@@ -287,7 +287,7 @@
     function css(curEle) {
         var argTwo = arguments[1], ary = Array.prototype.slice.call(arguments, 1);
         if (typeof argTwo === "string") {
-            if (typeof arguments[2]==="undefined") {
+            if (!arguments[2]) {
                 return getCss.apply(curEle, ary);
             }
             setCss.apply(curEle, ary);

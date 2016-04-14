@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+
+        .floorIndex {
+            position: fixed;
+            top: 100px;
+            left: 25px;
+            display: none;
+        }
+
+        .floorIndex ul {
+            list-style: none;
+        }
+
+        .floorIndex ul li a {
+            display: block;
+            line-height: 25px;
+            width: 40px;
+            height: 25px;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .floorIndex ul li a:hover {
+            background-color: red;
+            color: white;
+
+        }
+
+        .box {
+            width: 1210px;
+            margin: 0 auto;
+        }
+
+        .box .first {
+            height: 800px;
+            background-color: burlywood;
+        }
+
+        .box .divlast {
+            height: 800px;
+            background-color: darkolivegreen;
+        }
+    </style>
+</head>
+<body>
+<div class="floorIndex">
+    <ul>
+        <li><a href="javascript:;" floortext="">1F</a></li>
+        <li><a href="javascript:;" floortext="">2F</a></li>
+        <li><a href="javascript:;" floortext="">3F</a></li>
+        <li><a href="javascript:;" floortext="">4F</a></li>
+        <li><a href="javascript:;" floortext="">5F</a></li>
+        <li><a href="javascript:;" floortext="">6F</a></li>
+        <li><a href="javascript:;" floortext="">7F</a></li>
+        <li><a href="javascript:;" floortext="">7F</a></li>
+        <li><a href="javascript:;" floortext="">8F</a></li>
+        <li><a href="javascript:;" floortext="">10F</a></li>
+    </ul>
+</div>
+<div class="box">
+    <div class="first"></div>
+    <div id="conn">
+        <div id="onefloor"><img src="img/1floor.png" alt=""/></div>
+        <div id="twofloor"><img src="img/2floor.png" alt=""/></div>
+        <div id="threefloor"><img src="img/3floor.png" alt=""/></div>
+        <div id="fourfloor"><img src="img/4floor.png" alt=""/></div>
+        <div id="fivefloor"><img src="img/5floor.png" alt=""/></div>
+        <div id="sixfloor"><img src="img/6floor.png" alt=""/></div>
+        <div id="serverfloor"><img src="img/7floor.png" alt=""/></div>
+        <div id="etfloor"><img src="img/8floor.png" alt=""/></div>
+        <div id="nonefloor"><img src="img/9floor.png" alt=""/></div>
+        <div id="tenfloor"><img src="img/10floor.png" alt=""/></div>
+    </div>
+    <div class="divlast"></div>
+</div>
+<script>
+    var conn = document.getElementById("conn"), listDiv = conn.getElementsByTagName("div");
+    var floorIndex = document.getElementsByClassName("floorIndex")[0], alist = floorIndex.getElementsByTagName("a");
+
+    window.onscroll = function () {
+        var divoffsetT = listDiv[0].offsetTop;
+        var docDis = win("scrollTop") + win("clientHeight");
+        if (divoffsetT <= docDis) {
+            floorIndex.style.display = "block";
+        }
+        else
+            floorIndex.style.display = "none";
+    }
+    function aclick() {
+        for (var i = 0; i < alist.length; i++) {
+            var cura = alist[i];
+            cura.index = i;
+            cura.onclick = function () {
+                move(listDiv[this.index]);
+            };
+        }
+    }
+    function move(curDiv) {
+        _move();
+        function _move() {
+            clearTimeout(curDiv.timer);
+            var divoffsetT = curDiv.offsetTop;
+            var docDis = win("scrollTop");
+            var temp = 80;
+            if (docDis > divoffsetT) {
+                if (docDis - temp <= divoffsetT) {
+                    win("scrollTop", divoffsetT);
+                    clearTimeout(curDiv.timer);
+                    return;
+                }
+                docDis -= temp;
+                win("scrollTop", docDis);
+            }
+            else if (docDis < divoffsetT) {
+                if (docDis + temp >= divoffsetT) {
+                    win("scrollTop", divoffsetT);
+                    clearTimeout(curDiv.timer);
+                    return;
+                }
+                docDis += temp;
+                win("scrollTop", docDis);
+            }
+            else
+                return;
+            curDiv.timer = setTimeout(_move, 10);
+        }
+    }
+    function win(attr, val) {
+        if (!val) {
+            return document.documentElement[attr] || document.body[attr];
+        }
+        document.documentElement[attr] = val;
+        document.body[attr] = val;
+    }
+    aclick();
+
+</script>
+</body>
+</html>

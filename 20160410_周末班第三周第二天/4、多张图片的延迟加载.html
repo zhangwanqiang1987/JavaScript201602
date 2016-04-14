@@ -95,7 +95,7 @@
     ~function () {
         var xhr = new XMLHttpRequest;
         //URL地址后面加的随机数是在清除每一次请求数据时候(GET请求)产生的缓存
-        xhr.open("get", "json/newsList.txt?_=" + Math.random(), false);
+        xhr.open("get", "json/newsList.txt?_=" + Math.random(), false);//问号后面加-=+Math.random()是清除缓存
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4 && /^2\d{2}$/.test(xhr.status)) {
                 var val = xhr.responseText;
