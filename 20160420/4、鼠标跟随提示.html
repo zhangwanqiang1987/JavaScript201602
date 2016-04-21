@@ -89,7 +89,8 @@
         var $oLis = $(".box>li");
 
         //->解决IE7中zIndex无效的问题
-        $oLis.each(function (index) {
+        $oLis.each(function (index) {//要想覆盖住父级的同级 ，父级的z-index就必须比别的大，这就跟拼老爸一样，老爸强你就强，这就是传说中的哲学啊。
+
             $(this).css("zIndex", $oLis.length - index);
         });
 

@@ -95,12 +95,13 @@
     //    $(oDiv).replaceAll("ul");//->页面中所有的UL都用oDiv给替换了
 
     //->remove:把匹配的结果在页面中移除掉
-    //$box.remove();
+    //$box.remove();0
     //$("ul").remove("#ul2");
 
     //4、筛选
     //->eq(index)、first()、last()
     //->hasClass(strClass)检测当前的元素中是否包含某一个样式类名 ->$box.hasClass("w1")
+    //eq(index)的索引从零开始，返回的是jQuery对象，而get(index)索引页是从零开始，返回的是DOM对象
 
     //->filter、children、find:常用的三个筛选的方法
     //filter:同级过滤 首先通过选择器获取一个集合,在获取的内容中在进行二次筛选
